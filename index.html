@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="es">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Velina Beauty</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Velina Beauty: skincare, cuidado capilar y accesorios de belleza. Envíos a toda Colombia.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap">
+<style>
+/* Layout: sitio de una página con el sistema del brochure Champagne Imperial — hero satinado, filas rectas con líneas doradas, catálogo filtrable y pedido por WhatsApp. Un solo tema claro, elegido a propósito para la marca. */
+:root{
+  --bg:#FFFFFF; --blush:#F8ECEE; --champ:#F3E4DE; --ink:#3B2A2C; --mute:#7A6366; --rose:#9A4862; --rose-dk:#7E3650;
+  --gold:#A9853F; --gold-lt:#D9BD7E; --line:rgba(154,72,98,.16); --on-rose:#FFFFFF;
+  --f-word:'Bodoni Moda', 'Didot', Georgia, serif; --f-head:'Playfair Display', Georgia, serif; --f-body:'Lato', system-ui, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+a{color:inherit}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.in{max-width:1180px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.sec{padding-block:88px}
+.eyebrow{margin:0;font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:700}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+.h2{font-family:var(--f-head);font-style:italic;font-size:clamp(32px,4.2vw,48px);line-height:1.1;color:var(--rose)}
+.arch{display:block;width:26px;height:13px;border:1.5px solid var(--gold);border-bottom:0;border-radius:26px 26px 0 0;margin-bottom:14px}
+.center{text-align:center}.center .arch{margin-inline:auto}
+.lead{font-size:18px;color:var(--mute);max-width:60ch}
+.center .lead{margin-inline:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--rose);background:var(--rose);color:var(--on-rose);padding:13px 24px;font-size:14px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;text-decoration:none;transition:background .2s,border-color .2s}
+.btn:hover{background:var(--rose-dk);border-color:var(--rose-dk)}
+.btn.ghost{background:transparent;color:var(--rose)}
+.btn.ghost:hover{background:var(--blush)}
+
+/* Cabecera */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:40;background:rgba(255,255,255,.96)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--gold)}
+.top .in{display:flex;align-items:center;gap:20px;height:72px}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;flex:none}
+.brand img{width:44px;height:44px;border-radius:50%;box-shadow:0 0 0 1.5px var(--gold)}
+.brand b{font-family:var(--f-word);font-weight:400;font-size:24px;color:var(--gold);line-height:1}
+.brand small{display:block;font-size:9px;letter-spacing:.5em;color:var(--mute);margin-top:4px}
+.nav{display:flex;gap:26px;margin-left:auto}
+.nav a{text-decoration:none;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--ink);padding:6px 0;border-bottom:1px solid transparent}
+.nav a:hover{border-color:var(--gold)}
+.cartbtn{display:flex;align-items:center;gap:8px;border:1px solid var(--rose);background:transparent;color:var(--rose);padding:9px 16px;font-size:13px;letter-spacing:.12em;text-transform:uppercase;font-weight:700}
+.cartbtn .n{min-width:22px;height:22px;border-radius:11px;background:var(--rose);color:var(--on-rose);display:inline-grid;place-items:center;font-size:12px;letter-spacing:0;padding:0 6px}
+.menubtn{display:none;width:44px;height:44px;border:1px solid var(--gold);background:transparent;flex:none;align-items:center;justify-content:center;flex-direction:column;gap:5px;padding:0}
+.menubtn i{display:block;width:20px;height:1.5px;background:var(--rose);transition:transform .2s,opacity .2s}
+.menubtn[aria-expanded="true"] i:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.menubtn[aria-expanded="true"] i:nth-child(2){opacity:0}
+.menubtn[aria-expanded="true"] i:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mnav{border-top:1px solid var(--line);background:var(--bg)}
+.mnav a{display:flex;justify-content:space-between;align-items:center;padding:16px max(16px, env(safe-area-inset-right, 0px)) 16px max(16px, env(safe-area-inset-left, 0px));text-decoration:none;font-family:var(--f-head);font-style:italic;font-size:22px;color:var(--rose);border-bottom:1px solid var(--line)}
+.mnav a::after{content:"→";font-family:var(--f-body);font-style:normal;font-size:16px;color:var(--gold)}
+.mnav a:last-child{border-bottom:1px solid var(--gold)}
+.cartbtn{white-space:nowrap}
+@media (max-width:860px){.nav{display:none}.cartbtn{margin-left:auto;height:44px}.menubtn{display:flex}.top .in{gap:10px}}
+@media (max-width:420px){.cartbtn{letter-spacing:.06em;padding:0 10px;font-size:12px}.brand small{display:none}.brand b{font-size:21px}.brand{gap:8px}.brand img{width:38px;height:38px}}
+@media (min-width:861px){.mnav{display:none!important}}
+@media (max-width:380px){.brand small{display:none}.brand b{font-size:21px}.cartbtn{padding:9px 10px}}
+
+/* Hero */
+.hero{background:url(img/satin.jpg) center/cover no-repeat,var(--champ);border-bottom:1px solid var(--gold)}
+.hero .in{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:72px 80px}
+.hero h1{font-family:var(--f-word);font-size:clamp(60px,9vw,118px);line-height:.95;color:var(--gold);letter-spacing:-.01em}
+.hero h1 span{display:block;font-family:var(--f-body);font-size:clamp(12px,1.3vw,15px);letter-spacing:.9em;color:var(--ink);margin-top:16px;padding-left:.3em}
+.hero .tag{margin:26px 0 0;font-family:var(--f-head);font-style:italic;font-weight:400;font-size:clamp(38px,5.4vw,66px);color:var(--rose);line-height:1.08}
+.hero .rule{margin:0}
+.hero .copy{margin:16px 0 0;max-width:46ch;color:var(--ink)}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .rule{margin-top:22px;padding:9px 0;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);font-size:11px;letter-spacing:.38em;text-transform:uppercase;display:inline-block}
+.seal{justify-self:center;width:min(100%,400px);aspect-ratio:1;max-width:100%;border-radius:50%;box-shadow:0 0 0 8px rgba(255,255,255,.7),0 0 0 10px var(--gold),0 30px 60px rgba(90,40,50,.25);overflow:hidden}
+.seal img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.hero .in{grid-template-columns:1fr;text-align:center;padding-block:48px 56px;gap:36px}.hero .copy{margin-inline:auto}.hero .ctas{justify-content:center}.seal{width:min(72%,300px);order:-1}}
+
+/* Universo: tres filas rectas de columna a columna */
+.universe{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--gold);border-bottom:1px solid var(--gold);margin-top:48px}
+.uni{padding:30px 28px 32px;text-align:left;background:transparent;border:0;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start;transition:background .2s}
+.uni:last-child{border-right:0}
+.uni:hover{background:var(--blush)}
+.uni h3{display:flex;align-items:center;gap:12px;font-family:var(--f-head);font-style:italic;font-weight:600;font-size:26px;color:var(--rose)}
+.uni h3::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.uni p{margin:0;color:var(--mute);font-size:15px}
+.uni .go{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-top:6px}
+@media (max-width:760px){.universe{grid-template-columns:1fr}.uni{border-right:0;border-bottom:1px solid var(--line)}.uni:last-child{border-bottom:0}}
+
+/* Catálogo */
+.shop{background:linear-gradient(180deg,var(--blush),var(--bg) 340px)}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:40px;padding-bottom:18px;border-bottom:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--bg);padding:8px 16px;font-size:14px;transition:border-color .2s,background .2s}
+.chip:hover{border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:var(--rose);border-color:var(--rose);color:var(--on-rose)}
+.searchrow{display:flex;gap:10px;flex-wrap:wrap;margin-left:auto;justify-content:flex-end}
+.searchrow input,.searchrow select{font:inherit;font-size:14px;color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:9px 12px;min-width:0}
+.searchrow input{width:220px;max-width:100%}
+.count{margin:16px 0 0;font-size:14px;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));gap:40px 28px;margin-top:22px}
+.card{display:flex;flex-direction:column;min-width:0}
+.ph{aspect-ratio:1;max-width:100%;background:#fff;border:1px solid var(--line);position:relative;display:grid;place-items:center;padding:20px}
+.ph::after{content:"";position:absolute;left:-1px;right:-1px;bottom:-1px;height:2px;background:var(--gold)}
+.ph img{position:absolute;left:12%;top:16%;width:76%;height:74%;object-fit:contain}
+.cat-tag{position:absolute;z-index:1;top:10px;left:10px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);background:rgba(255,255,255,.92);padding:3px 7px;font-weight:700}
+.card h3{margin-top:16px;font-family:var(--f-head);font-style:italic;font-weight:600;font-size:19px;line-height:1.25}
+.pr{display:flex;align-items:center;gap:12px;margin-top:8px}
+.pr::before,.pr::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),var(--gold))}
+.pr::after{background:linear-gradient(90deg,var(--gold),var(--line))}
+.card h3{text-align:center;min-height:2.5em;display:flex;align-items:center;justify-content:center}
+.card .pr{margin-bottom:14px}
+.card .add{margin-top:auto;width:100%;min-height:44px}
+.price{font-family:var(--f-word);font-size:22px;color:var(--rose);font-variant-numeric:tabular-nums}
+.price small{font-family:var(--f-body);font-size:10px;letter-spacing:.2em;color:var(--mute);margin-left:4px}
+.add{margin-top:14px;border:1px solid var(--rose);background:transparent;color:var(--rose);padding:10px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;transition:background .2s,color .2s}
+.add:hover{background:var(--rose);color:var(--on-rose)}
+.add.on{background:var(--rose);color:var(--on-rose)}
+.empty{padding:48px 0;text-align:center;color:var(--mute)}
+@media (max-width:600px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+  .searchrow{width:100%;flex-wrap:nowrap;margin-left:0}
+  .searchrow input{flex:1 1 0;width:auto}
+  .searchrow select{flex:1 1 0}
+  .ph{padding:10px}
+  .cat-tag{font-size:8px;letter-spacing:.14em;top:6px;left:6px;padding:2px 5px}
+  .card h3{font-size:14.5px;margin-top:10px;min-height:2.6em}
+  .pr{gap:6px;margin-top:4px}
+  .price{font-size:17px}
+  .price small{font-size:8px;letter-spacing:.12em;margin-left:2px}
+  .card .pr{margin-bottom:10px}
+  .card .add{font-size:10px;letter-spacing:.08em;padding:8px 4px;min-height:40px}
+}
+
+/* Nosotras */
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start;margin-top:8px}
+.story blockquote{margin:0;font-family:var(--f-head);font-style:italic;font-size:clamp(26px,3vw,36px);line-height:1.3;color:var(--rose);padding-top:22px;border-top:1px solid var(--gold)}
+.story blockquote cite{display:block;margin-top:18px;font-family:var(--f-body);font-style:normal;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.story .txt{display:grid;gap:16px;min-width:0}
+.story .txt p{margin:0}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:64px;border-top:1px solid var(--gold);border-bottom:1px solid var(--gold)}
+.mv div{padding:32px 32px 34px 0}
+.mv div+div{padding-left:32px;border-left:1px solid var(--line)}
+.mv h3{font-family:var(--f-head);font-style:italic;font-weight:600;font-size:26px;color:var(--rose);margin-bottom:10px}
+.mv p{margin:0}
+.vals{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px}
+.val{padding:24px 26px 26px 0;border-bottom:1px solid var(--line)}
+.val:nth-child(3n+2),.val:nth-child(3n){padding-left:26px;border-left:1px solid var(--line)}
+.val b{display:block;font-family:var(--f-head);font-style:italic;font-weight:600;font-size:21px;color:var(--rose);margin-bottom:4px}
+.val span{color:var(--mute);font-size:15px}
+@media (max-width:860px){.story{grid-template-columns:1fr;gap:32px}.mv{grid-template-columns:1fr}.mv div,.mv div+div{padding:26px 0;border-left:0}.mv div+div{border-top:1px solid var(--line)}.vals{grid-template-columns:1fr 1fr}.val,.val:nth-child(3n+2),.val:nth-child(3n){padding:20px 18px 20px 0;border-left:0}.val:nth-child(2n){padding-left:18px;border-left:1px solid var(--line)}}
+@media (max-width:480px){.vals{grid-template-columns:1fr}.val:nth-child(2n){padding-left:0;border-left:0}}
+
+/* Cómo comprar */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:44px}
+.step{background:var(--blush);padding:30px 28px 32px;display:grid;gap:8px;align-content:start}
+.step .num{font-family:var(--f-word);font-size:40px;color:var(--gold);line-height:1}
+.step h3{font-family:var(--f-head);font-style:italic;font-weight:600;font-size:24px;color:var(--rose)}
+.step p{margin:0;font-size:15px}
+@media (max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* Contacto */
+.contact{background:url(img/satin.jpg) center/cover no-repeat,var(--champ);border-top:1px solid var(--gold)}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;margin-top:44px}
+.people{display:grid;gap:4px}
+.per{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0;flex-wrap:wrap}
+.per .nm{font-size:12px;letter-spacing:.24em;text-transform:uppercase}
+.per .tel{font-family:var(--f-word);font-size:26px;color:var(--rose);font-variant-numeric:tabular-nums;user-select:all}
+.per.main{background:var(--rose);color:var(--on-rose);padding:16px 20px;margin-top:8px}
+.per.main .tel{color:var(--on-rose)}
+.ship{margin-top:22px;display:grid;gap:8px;font-size:15px}
+.ship li{list-style:none;display:flex;gap:10px}
+.ship ul{margin:0;padding:0;display:grid;gap:8px}
+.ship li::before{content:"✦";color:var(--gold)}
+.social{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.soc{background:rgba(255,255,255,.7);padding:22px;display:grid;justify-items:center;gap:12px;text-align:center;text-decoration:none;border:1px solid rgba(169,133,63,.35)}
+.soc svg{width:150px;height:150px;max-width:100%;background:#fff}
+.soc b{font-size:13px;letter-spacing:.24em;text-transform:uppercase}
+.soc span{font-size:14px;color:var(--rose)}
+@media (max-width:860px){.cgrid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:420px){.social{grid-template-columns:1fr}}
+
+footer{background:var(--rose-dk);color:#F7E6EC}
+footer .in{padding-block:44px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center}
+footer .lema{font-family:var(--f-head);font-style:italic;font-size:20px}
+footer .by{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-lt)}
+
+/* Pedido */
+.scrim{position:fixed;inset:0;background:rgba(59,42,44,.45);z-index:50}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:51;width:min(420px,100%);background:var(--bg);display:flex;flex-direction:column;box-shadow:-20px 0 50px rgba(59,42,44,.2);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);padding-right:env(safe-area-inset-right,0px)}
+.dh{display:flex;justify-content:space-between;align-items:center;padding:20px 22px;border-bottom:1px solid var(--gold)}
+.dh h2{font-family:var(--f-head);font-style:italic;font-size:28px;color:var(--rose)}
+.x{border:0;background:transparent;font-size:28px;line-height:1;padding:4px 8px;color:var(--mute)}
+.items{flex:1;overflow-y:auto;padding:6px 22px}
+.it{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.it img{width:64px;height:64px;object-fit:contain;background:#fff;border:1px solid var(--line)}
+.it .nm{font-family:var(--f-head);font-style:italic;font-weight:600;font-size:15px;line-height:1.25}
+.it .pp{font-size:13px;color:var(--mute);font-variant-numeric:tabular-nums}
+.qty{display:flex;align-items:center;border:1px solid var(--line)}
+.qty button{border:0;background:transparent;width:30px;height:30px;font-size:16px}
+.qty span{min-width:22px;text-align:center;font-variant-numeric:tabular-nums}
+.df{padding:18px 22px 22px;border-top:1px solid var(--gold);display:grid;gap:12px}
+.tot{display:flex;justify-content:space-between;align-items:baseline}
+.tot b{font-family:var(--f-word);font-size:28px;color:var(--rose);font-weight:400;font-variant-numeric:tabular-nums}
+.note{margin:0;font-size:13px;color:var(--mute)}
+.dempty{padding:40px 0;text-align:center;color:var(--mute)}
+.copied{font-size:13px;color:var(--rose);text-align:center;margin:0}
+
+/* ===== Cajas y botones: versión formal ===== */
+.btn{font-size:12px;letter-spacing:.26em;padding:15px 30px;font-weight:700;border-width:1px}
+.btn.ghost{color:var(--ink);border-color:var(--gold);background:transparent}
+.btn.ghost:hover{background:transparent;color:var(--rose);border-color:var(--rose)}
+.cartbtn{border-color:var(--gold);color:var(--ink);font-size:12px;letter-spacing:.2em;font-weight:700}
+.cartbtn:hover{border-color:var(--rose);color:var(--rose)}
+.menubtn{border-color:var(--gold)}
+/* Filtros como pestañas con subrayado dorado */
+.chips{gap:6px 22px}
+.chip{border:0;background:transparent;padding:8px 0;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--mute);border-bottom:1px solid transparent;font-weight:700}
+.chip:hover{color:var(--ink);border-color:var(--line)}
+.chip[aria-pressed="true"]{background:transparent;color:var(--rose);border-bottom:1px solid var(--gold)}
+/* Buscador y orden con línea inferior */
+.searchrow input,.searchrow select{border:0;border-bottom:1px solid var(--gold);background:transparent;padding:9px 2px;font-size:14px}
+.searchrow input:focus,.searchrow select:focus{outline:none;border-bottom-color:var(--rose)}
+/* Caja de producto */
+.ph{border:0;background:#FBF7F5}
+.ph img{mix-blend-mode:multiply}
+.ph::after{left:0;right:0;bottom:0;height:1px}
+.cat-tag{background:transparent;padding:0;top:14px;left:14px;font-size:9px;letter-spacing:.3em}
+.card h3{font-weight:400}
+.add{border:1px solid var(--gold);color:var(--ink);background:transparent;font-size:11px;letter-spacing:.24em;font-weight:700;transition:background .25s,color .25s,border-color .25s}
+.add:hover{background:var(--ink);border-color:var(--ink);color:#fff}
+.add.on{background:var(--rose);border-color:var(--rose);color:#fff}
+/* Pasos y contacto */
+.step{background:transparent;border-top:1px solid var(--gold);border-bottom:1px solid var(--line);padding:28px 4px 30px}
+.per.main{background:var(--rose)}
+.soc{background:#fff;border:1px solid rgba(169,133,63,.45)}
+/* Caja de la línea oficial: tarjeta marfil con doble marco dorado */
+.line-card{position:relative;background:#fff;text-align:center;padding:34px 24px 30px;border:1px solid var(--gold);box-shadow:0 18px 40px rgba(90,40,50,.12)}
+.line-card::before{content:"";position:absolute;inset:6px;border:1px solid rgba(169,133,63,.45);pointer-events:none}
+.line-card p{margin:0;position:relative}
+.lc-eye{display:flex;align-items:center;justify-content:center;gap:14px;font-size:11px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold);font-weight:700;padding-left:.42em}
+.lc-eye::before,.lc-eye::after{content:"";width:38px;height:1px;background:var(--gold)}
+.lc-num{margin-top:14px!important;font-family:var(--f-word);font-size:clamp(34px,4.6vw,46px);line-height:1;color:var(--rose);font-variant-numeric:tabular-nums;letter-spacing:.02em;user-select:all}
+.lc-sub{margin-top:14px!important;font-family:var(--f-head);font-style:italic;font-size:16px;color:var(--mute)}
+/* Pedido */
+.qty{border-color:var(--gold)}
+@media (max-width:600px){
+  .chips{gap:4px 16px}
+  .chip{font-size:11px;letter-spacing:.14em}
+  .cat-tag{font-size:7.5px;letter-spacing:.18em;top:8px;left:8px}
+  .add{font-size:9.5px;letter-spacing:.12em;padding:8px 4px}
+  .btn{padding:14px 22px;letter-spacing:.2em}
+}
+@media (max-width:420px){.cartbtn{letter-spacing:.06em;padding:0 10px}}
+</style>
+
+<header class="top">
+  <div class="in">
+    <a class="brand" href="#inicio"><img src="img/logo.jpg" alt=""><span><b>Velina</b><small>BEAUTY</small></span></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#productos">Productos</a><a href="#nosotras">Nosotras</a><a href="#como-comprar">Cómo comprar</a><a href="#contacto">Contacto</a>
+    </nav>
+    <button class="cartbtn" id="openCart" aria-label="Ver mi pedido">Mi pedido <span class="n" id="cartN">0</span></button>
+    <button class="menubtn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mnav"><i></i><i></i><i></i></button>
+  </div>
+  <nav class="mnav" id="mnav" aria-label="Menú" hidden>
+    <a href="#productos">Productos</a><a href="#nosotras">Nosotras</a><a href="#como-comprar">Cómo comprar</a><a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="inicio">
+  <div class="in">
+    <div>
+      <p class="rule">Belleza · Cuidado personal · Estilo</p>
+      <h1 class="tag">Tu belleza, nuestro propósito.</h1>      <div class="ctas"><a class="btn" href="#productos">Ver productos</a><a class="btn ghost" href="#contacto">Escríbenos</a></div>
+    </div>
+    <div class="seal"><img src="img/logo.jpg" alt="Logo de Velina Beauty"></div>
+  </div>
+</section>
+
+<section class="sec" id="universo">
+  <div class="in center">
+    <span class="arch"></span>
+    <h2 class="h2">Descubre nuestro universo beauty</h2>
+    <p class="lead" style="margin-top:14px">Todo lo que tu rutina necesita, reunido en un mismo lugar.</p>
+  </div>
+  <div class="in">
+    <div class="universe">
+      <button class="uni" data-go="Hair Beauty"><h3>Hair Beauty</h3><p>Planchas, rizadoras, ondas de sirena, secadores, cepillos secadores y herramientas multifunción.</p><span class="go">Ver productos →</span></button>
+      <button class="uni" data-go="Skincare"><h3>Skincare</h3><p>Máscaras de luz LED, Combo Glow LED, limpiadores faciales, serums, cremas y mascarillas.</p><span class="go">Ver productos →</span></button>
+      <button class="uni" data-go="Beauty &amp; Care"><h3>Beauty &amp; Care</h3><p>Afeitadoras, depiladoras IPL, masajeadores faciales y accesorios de cuidado personal.</p><span class="go">Ver productos →</span></button>
+    </div>
+  </div>
+</section>
+
+<section class="sec shop" id="productos">
+  <div class="in">
+    <div class="center"><span class="arch"></span><h2 class="h2">Nuestros productos</h2></div>
+    <div class="tools">
+      <div class="chips" id="chips" role="group" aria-label="Categorías"></div>
+      <div class="searchrow">
+        <input id="q" type="search" placeholder="Buscar producto" aria-label="Buscar producto">
+        <select id="sort" aria-label="Ordenar">
+          <option value="">Orden del catálogo</option><option value="asc">Precio: menor a mayor</option><option value="desc">Precio: mayor a menor</option>
+        </select>
+      </div>
+    </div>
+    <p class="count" id="count"></p>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>No encontramos productos con esa búsqueda. Escríbenos y te ayudamos a encontrarlo.</p>
+  </div>
+</section>
+
+<section class="sec" id="nosotras">
+  <div class="in">
+    <div class="center"><span class="arch"></span><h2 class="h2">Nuestra historia</h2></div>
+    <div class="story" style="margin-top:36px">
+      <blockquote>Somos Jessica y Nataly. Somos dos hermanas emprendedoras. Somos Velina Beauty.<cite>Fundadoras</cite></blockquote>
+      <div class="txt">
+        <p>Detrás de Velina Beauty hay una historia de dos hermanas unidas por un mismo sueño: emprender, crecer y convertir su pasión por el mundo de la belleza en una empresa.</p>
+        <p>Velina Beauty nació de la ilusión de transformar esa pasión en un proyecto propio: un espacio donde descubras productos que complementen tu rutina, resalten tu belleza y fortalezcan tu amor propio.</p>
+        <p>Más que vender productos, queremos compartir una experiencia. Nos emociona seleccionar alternativas de belleza, descubrir nuevas tendencias y acercarlas a ti con dedicación y mucho cariño.</p>
+        <p>Hoy soñamos con llevar nuestra marca a cada rincón de Colombia y demostrar que los grandes proyectos comienzan con una idea, valentía y muchas ganas de salir adelante.</p>
+      </div>
+    </div>
+    <div class="mv">
+      <div><h3>Nuestra misión</h3><p>Ofrecer productos de belleza y cuidado personal que te permitan disfrutar, complementar y renovar tu rutina de autocuidado, con variedad, atención cercana y una experiencia de compra satisfactoria.</p></div>
+      <div><h3>Nuestra visión</h3><p>Ser una marca reconocida en Colombia en belleza y cuidado personal, destacada por nuestro portafolio y la confianza de nuestros clientes, e inspirar a otras mujeres a emprender y creer en sus proyectos.</p></div>
+    </div>
+    <div class="vals" aria-label="Nuestros valores">
+      <div class="val"><b>Pasión</b><span>Amamos lo que hacemos y trabajamos con entusiasmo.</span></div>
+      <div class="val"><b>Confianza</b><span>Construimos relaciones honestas con nuestros clientes.</span></div>
+      <div class="val"><b>Cercanía</b><span>Cada cliente es importante para nosotras.</span></div>
+      <div class="val"><b>Innovación</b><span>Estamos atentas a las tendencias del mundo beauty.</span></div>
+      <div class="val"><b>Compromiso</b><span>Trabajamos con dedicación para darte una buena experiencia.</span></div>
+      <div class="val"><b>Perseverancia</b><span>Creemos en nuestros sueños y trabajamos cada día por ellos.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="como-comprar" style="padding-top:0">
+  <div class="in center">
+    <span class="arch"></span><h2 class="h2">Cómo comprar</h2>
+  </div>
+  <div class="in">
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3>Elige</h3><p>Agrega tus productos favoritos a tu pedido desde esta página.</p></div>
+      <div class="step"><span class="num">2</span><h3>Escríbenos</h3><p>Envía el pedido por WhatsApp y te confirmamos la disponibilidad.</p></div>
+      <div class="step"><span class="num">3</span><h3>Recíbelo</h3><p>Despachamos a cualquier ciudad de Colombia. El envío se cotiza según tu destino.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contacto">
+  <div class="in">
+    <div class="center"><span class="arch"></span><h2 class="h2">¡Queremos conocerte!</h2>
+      <p class="lead" style="margin-top:14px">Estamos aquí para ayudarte a encontrar tus productos favoritos.</p></div>
+    <div class="cgrid">
+      <div>
+        <div class="line-card">
+          <p class="lc-eye">Línea oficial</p>
+          <p class="lc-num">317 173 6785</p>        </div>
+        <div class="ctas" style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px"><a class="btn" id="waHello" href="https://wa.me/573171736785" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+      </div>
+      <div class="social">
+        <a class="soc" href="https://www.instagram.com/velinabeauty04/" target="_blank" rel="noopener"><span id="qrIg"></span><b>Instagram</b><span>@velinabeauty04</span></a>
+        <a class="soc" href="https://www.tiktok.com/@velinabeauty4" target="_blank" rel="noopener"><span id="qrTt"></span><b>TikTok</b><span>@velinabeauty4</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="in"><span class="lema">Dos hermanas, un sueño y una pasión por la belleza.</span><span class="by">By Jessica &amp; Nataly</span></div></footer>
+
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="dTitle">
+  <div class="dh"><h2 id="dTitle">Mi pedido</h2><button class="x" id="closeCart" aria-label="Cerrar pedido">×</button></div>
+  <div class="items" id="items"></div>
+  <div class="df">
+    <div class="tot"><span>Total productos</span><b id="total">$0</b></div>
+    <p class="note">El envío se cotiza aparte según tu ciudad.</p>
+    <a class="btn" id="sendWa" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+    <button class="btn ghost" id="copyOrder">Copiar pedido</button>
+    <p class="note">Si WhatsApp no se abre, copia el pedido y envíalo al 317 173 6785.</p>
+    <p class="copied" id="copied" hidden>Pedido copiado.</p>
+  </div>
+</aside>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script>
+const WA = "573171736785";
+const P = [
+  ["p2_0","Rizadora giratoria PRONOVA",70000,"Rizadoras","Hair Beauty"],
+  ["p2_1","Rizadora 25 mm",55000,"Rizadoras","Hair Beauty"],
+  ["p2_2","Ondas de sirena 22 mm",50000,"Rizadoras","Hair Beauty"],
+  ["p2_3","Rizadora cónica",50000,"Rizadoras","Hair Beauty"],
+  ["p3_0","Plancha VGR 450°",100000,"Planchas","Hair Beauty"],
+  ["p3_1","Plancha placa ancha 950°",90000,"Planchas","Hair Beauty"],
+  ["p3_2","Plancha 1.1 aguacate",50000,"Planchas","Hair Beauty"],
+  ["p3_3","Plancha 1.1 turmalina",70000,"Planchas","Hair Beauty"],
+  ["p4_0","Secador WAER 4000 W antichoque",100000,"Secadores","Hair Beauty"],
+  ["p4_1","Secador profesional VGR",120000,"Secadores","Hair Beauty"],
+  ["p4_2","Secador infrarrojo",70000,"Secadores","Hair Beauty"],
+  ["p4_3","Combo secador y plancha Titanio",80000,"Secadores","Hair Beauty"],
+  ["p5_0","Cepillo secador aguacate o keratina",45000,"Cepillos secadores","Hair Beauty"],
+  ["p5_1","Cepillo giratorio",80000,"Cepillos secadores","Hair Beauty"],
+  ["p5_2","Air Style 5 en 1",55000,"Cepillos secadores","Hair Beauty"],
+  ["p6_1","Máscara de luz LED",110000,"Skincare","Skincare"],
+  ["p6_0","Combo Glow LED",149900,"Skincare","Skincare"],
+  ["p6_2","Perlas hidratantes vitamina D y E",35000,"Skincare","Skincare"],
+  ["p6_3","Limpiador facial centella asiática",35000,"Skincare","Skincare"],
+  ["p7_1","Crema antiedad con colágeno",45000,"Skincare","Skincare"],
+  ["p7_2","Crema niacinamida líneas de expresión",30000,"Skincare","Skincare"],
+  ["p7_0","Parches para los ojos",25000,"Skincare","Skincare"],
+  ["p7_3","Mascarilla de arcilla",20000,"Skincare","Skincare"],
+  ["p8_0","Extractor de espinillas",45000,"Beauty & Care","Beauty & Care"],
+  ["p8_1","Afeitadora GEEMY",45000,"Beauty & Care","Beauty & Care"],
+  ["p8_2","Depiladora IPL",100000,"Beauty & Care","Beauty & Care"],
+  ["p8_3","Masajeador facial",40000,"Beauty & Care","Beauty & Care"]
+].map(([id,name,price,sub,group],i) => ({id,name,price,sub,group,i}));
+const money = n => "$" + n.toLocaleString("es-CO").replace(/,/g,".");
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const $ = s => document.querySelector(s);
+
+/* QR */
+function qr(url){
+  try { const q = qrcode(0,"M"); q.addData(url); q.make(); const n = q.getModuleCount(); let d = "";
+    for (let r=0;r<n;r++) for (let c=0;c<n;c++) if (q.isDark(r,c)) d += `M${c} ${r}h1v1h-1z`;
+    return `<svg viewBox="-2 -2 ${n+4} ${n+4}" role="img" aria-label="Código QR"><path d="${d}" fill="#3B2A2C"/></svg>`;
+  } catch(e){ return ""; }
+}
+$("#qrIg").innerHTML = qr("https://www.instagram.com/velinabeauty04/");
+$("#qrTt").innerHTML = qr("https://www.tiktok.com/@velinabeauty4");
+
+/* Pedido */
+let cart = {};
+try { cart = JSON.parse(localStorage.getItem("velina-cart") || "{}") || {}; } catch(e) {}
+const save = () => { try { localStorage.setItem("velina-cart", JSON.stringify(cart)); } catch(e) {} };
+function orderText(){
+  const rows = P.filter(p => cart[p.id]).map(p => `• ${cart[p.id]} × ${p.name} — ${money(p.price*cart[p.id])}`);
+  const tot = P.reduce((s,p) => s + (cart[p.id]||0)*p.price, 0);
+  return `Hola Velina Beauty, quiero hacer este pedido:\n${rows.join("\n")}\nTotal productos: ${money(tot)}\nMi ciudad: `;
+}
+function renderCart(){
+  const list = P.filter(p => cart[p.id]);
+  const n = list.reduce((s,p) => s + cart[p.id], 0);
+  $("#cartN").textContent = n;
+  $("#items").innerHTML = list.length ? list.map(p => `
+    <div class="it"><img src="img/${p.id}.jpg" alt=""><div><div class="nm">${esc(p.name)}</div><div class="pp">${money(p.price)} c/u</div></div>
+      <div class="qty"><button data-d="-1" data-id="${p.id}" aria-label="Quitar uno">−</button><span>${cart[p.id]}</span><button data-d="1" data-id="${p.id}" aria-label="Agregar uno">+</button></div></div>`).join("")
+    : `<p class="dempty">Tu pedido está vacío. Agrega productos desde el catálogo.</p>`;
+  $("#total").textContent = money(list.reduce((s,p) => s + cart[p.id]*p.price, 0));
+  $("#sendWa").href = `https://wa.me/${WA}?text=${encodeURIComponent(orderText())}`;
+  $("#sendWa").hidden = $("#copyOrder").hidden = !list.length;
+  document.querySelectorAll(".add").forEach(b => { const on = !!cart[b.dataset.id]; b.classList.toggle("on", on); b.textContent = on ? `En tu pedido (${cart[b.dataset.id]})` : "Agregar al pedido"; });
+  save();
+}
+$("#items").addEventListener("click", e => {
+  const b = e.target.closest("button[data-id]"); if (!b) return;
+  cart[b.dataset.id] = (cart[b.dataset.id]||0) + +b.dataset.d; if (cart[b.dataset.id] <= 0) delete cart[b.dataset.id]; renderCart();
+});
+const openCart = () => { $("#drawer").hidden = $("#scrim").hidden = false; $("#closeCart").focus(); };
+const closeCart = () => { $("#drawer").hidden = $("#scrim").hidden = true; $("#openCart").focus(); };
+$("#openCart").onclick = openCart; $("#closeCart").onclick = closeCart; $("#scrim").onclick = closeCart;
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("#drawer").hidden) closeCart(); });
+$("#copyOrder").onclick = async () => {
+  const t = orderText();
+  try { await navigator.clipboard.writeText(t); $("#copied").textContent = "Pedido copiado. Pégalo en WhatsApp."; }
+  catch(e) { $("#copied").textContent = "No se pudo copiar automáticamente. Escríbenos al 317 173 6785."; }
+  $("#copied").hidden = false; setTimeout(() => $("#copied").hidden = true, 3500);
+};
+
+/* Catálogo */
+const CATS = ["Todos","Rizadoras","Planchas","Secadores","Cepillos secadores","Skincare","Beauty & Care"];
+let cat = "Todos";
+$("#chips").innerHTML = CATS.map(c => `<button class="chip" aria-pressed="${c===cat}" data-c="${esc(c)}">${esc(c)}</button>`).join("");
+$("#chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if (!b) return; cat = b.dataset.c; renderGrid(); });
+$("#grid").innerHTML = P.map(p => `
+  <article class="card" data-id="${p.id}">
+    <div class="ph"><span class="cat-tag">${esc(p.sub)}</span><img src="img/${p.id}.jpg" alt="${esc(p.name)}" loading="lazy"></div>
+    <h3>${esc(p.name)}</h3>
+    <div class="pr"><span class="price">${money(p.price)}<small>COP</small></span></div>
+    <button class="add" data-id="${p.id}">Agregar al pedido</button>
+  </article>`).join("");
+$("#grid").addEventListener("click", e => { const b = e.target.closest(".add"); if (!b) return; cart[b.dataset.id] = (cart[b.dataset.id]||0) + 1; renderCart(); });
+const norm = s => s.normalize("NFD").replace(/\p{M}/gu,"").toLowerCase();
+function renderGrid(){
+  const q = norm($("#q").value.trim()), sort = $("#sort").value;
+  document.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.c === cat));
+  let list = P.filter(p => (cat === "Todos" || p.sub === cat || p.group === cat) && (!q || norm(p.name + " " + p.sub).includes(q)));
+  if (sort) list = [...list].sort((a,b) => sort === "asc" ? a.price - b.price : b.price - a.price);
+  const order = new Map(list.map((p,i) => [p.id,i]));
+  document.querySelectorAll(".card").forEach(c => { const has = order.has(c.dataset.id); c.hidden = !has; c.style.order = has ? order.get(c.dataset.id) : 0; });
+  $("#count").textContent = `${list.length} producto${list.length===1?"":"s"}`;
+  $("#empty").hidden = list.length > 0;
+}
+$("#q").oninput = renderGrid; $("#sort").onchange = renderGrid;
+document.querySelectorAll(".uni").forEach(u => u.onclick = () => {
+  cat = u.dataset.go; renderGrid(); document.getElementById("productos").scrollIntoView();
+});
+/* Menú celular */
+const mb = $("#menuBtn"), mn = $("#mnav");
+const setMenu = open => { mn.hidden = !open; mb.setAttribute("aria-expanded", open); mb.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú"); };
+mb.onclick = () => setMenu(mn.hidden);
+mn.addEventListener("click", e => { if (e.target.closest("a")) setMenu(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && !mn.hidden) { setMenu(false); mb.focus(); } });
+$("#openCart").addEventListener("click", () => setMenu(false));
+
+renderGrid(); renderCart();
+</script>
+
+</html>
